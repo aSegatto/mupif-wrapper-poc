@@ -2,7 +2,7 @@
 Proof of concept with the aim to expose mupif functionalities as a rest service. 
 
 ## How to Lauch
-- clone/ download the project form github
+- clone / download the project form github
 - install / check pipenv (developed with version 8.2.7) 
 - create a pipenv associated to the project running `pipenv install` from inside the project folder
 - enter pipenv with command `pipenv shell`
@@ -27,3 +27,7 @@ Proof of concept with the aim to expose mupif functionalities as a rest service.
 The main idea behind this poc is to create a service (a process always running) that exposes some functionalities
 - Ask for a MuPIF WF execution 
 - Ask for MuPIF WF execution status / output 
+The code is divided into 3 modules
+- rest interface (main.py)
+- execution service:  which is responsible to launch the executions in a process pool and to hold the status / results of a started execution 
+- mupif_worker: which is the code that gets run inside the pool processes and loads MuPIF workflows

@@ -14,7 +14,7 @@ class DinamicallyImportedScriptExecution(Resource):
     def get(self, script_name):
         inputs = request.args.get("inputs")
         inputs_dict = ast.literal_eval(inputs)
-        print("Inputs:", inputs_dict)
+        logger.info("Inputs: %s" % inputs_dict)
         execution_id = executionService.create_new_execution(script_name, inputs_dict)
         response_message = '<body><p>Execution id = ' + execution_id + '</p><a href="http://127.0.0.1:5000/info/' + execution_id + '">view result</a></body>'
         return Response(response=response_message, status=200, mimetype="text/html")
@@ -22,7 +22,7 @@ class DinamicallyImportedScriptExecution(Resource):
     def post(self, script_name):
         inputs = request.data
         inputs_dict = ast.literal_eval(inputs.decode())
-        print("Inputs:", inputs_dict)
+        logger.info("Inputs: %s" % inputs_dict)
         execution_id = executionService.create_new_execution(script_name, inputs_dict)
         response_message = 'Execution id = %s\n' % execution_id
         return Response(response=response_message, status=200, mimetype="text/html")
