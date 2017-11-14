@@ -21,7 +21,7 @@ Proof of concept with the aim to expose mupif functionalities as a rest service.
 - run `curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://127.0.0.1:5000/info/INSERT_RETRIEVED_EXECUTION_ID_HERE`
 - `RUNNING` message will be displayed
 - Wait 10 seconds, the execute the curl command again 
-- Output file names should be displayed (`{"app3.out": "app3.out", "log": "mupif.log"}`)
+- Output file names should be displayed (`{"app3.out": "app3.out", "log": "mupif.log"}`) 
 
 ## Notes
 The main idea behind this poc is to create a service (a process always running) that exposes some functionalities
@@ -32,3 +32,5 @@ The code is divided into 3 modules
 - rest interface (main.py)
 - execution service: is responsible to launch the executions in a process pool and to hold the status / results of a started execution 
 - mupif_worker: code that gets run inside the pool processes and loads MuPIF workflows
+
+The ouput of a correctly completed execution is an object containing the produced files name. We intend this names as a pointer to the outputs produced by the execution, so they could also be an id pointing to a record set on a database
